@@ -1,0 +1,78 @@
+﻿<Window x:Class="Sudoku_Solver.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Sudoku_Solver"
+        mc:Ignorable="d"
+        Title="Sudoku Solver" Height="500" Width="1000">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <Border Grid.Column="0"
+                BorderThickness="2"
+                BorderBrush="Black">
+            <Grid Name="grdSudoku">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+            </Grid>
+        </Border>
+
+        <Grid Grid.Column="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="7*"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <TextBox Grid.Row="0"
+                     FontSize="20"
+                     Text="{Binding Input, Mode=TwoWay}"
+                     TextWrapping="Wrap"
+                     AcceptsReturn="True"/>
+            <StackPanel Grid.Row="1"
+                        Orientation="Horizontal"
+                        HorizontalAlignment="Center"
+                        VerticalAlignment="Center">
+                <Button HorizontalAlignment="Right"
+                        Height="20"
+                        Width="75"
+                        Margin="2"
+                        Content="Generate"
+                        Click="btnGenerate_Click"/>                
+                <Button HorizontalAlignment="Right"
+                        Height="20"
+                        Width="75"
+                        Margin="2"
+                        Content="Parse"
+                        Click="btnParse_Click"/>
+                <Button HorizontalAlignment="Right"
+                        Height="20"
+                        Width="75"
+                        Margin="2"
+                        Content="Solve"
+                        Click="btnSolve_Click"/> 
+            </StackPanel>
+        </Grid>
+    </Grid>
+</Window>
