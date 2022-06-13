@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 namespace Sudoku_Solver
 {
+    /// <summary>
+    /// Generates a valid Sudoku to be solved
+    /// </summary>
     public static class SudokuGenerator
     {
         private static Random RGenerator = new Random();
@@ -41,6 +44,7 @@ namespace Sudoku_Solver
             return false;
         }
 
+        //Generate a random set of shuffled indicess
         private static IEnumerable<(int, int)> ShuffledIndices(int n)
         {
             HashSet<(int, int)> values = new HashSet<(int, int)>();
@@ -53,6 +57,7 @@ namespace Sudoku_Solver
             return values;
         }
 
+        //Shuffles an Array (extension)
         private static void Shuffle(this int[] arr)
         {
             int n = arr.Length;

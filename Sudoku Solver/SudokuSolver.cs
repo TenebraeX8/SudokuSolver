@@ -6,8 +6,17 @@ using System.Threading.Tasks;
 
 namespace Sudoku_Solver
 {
+    /// <summary>
+    /// Provides methods for solving an existing sudoku model
+    /// </summary>
     public static class SudokuSolver
     {
+
+        /// <summary>
+        /// Can be called to solve the provided model
+        /// </summary>
+        /// <param name="model">An arbitrary Sudoku Model</param>
+        /// <returns>true, if the model has been solved</returns>
         public static bool Solve(SudokuModel model)
         {
             NovemTreeNode<int> root = new NovemTreeNode<int>(-1);
@@ -15,6 +24,7 @@ namespace Sudoku_Solver
             return Solve(model, coordinates, root);
         }
 
+        //Recursive decent by induction
         private static bool Solve(SudokuModel model, List<(int, int)> empty, NovemTreeNode<int> solutionTree)
         {
             if (empty.Count == 0) return true;
@@ -39,7 +49,7 @@ namespace Sudoku_Solver
             return false;
         }
 
-
+        //Computes the empty indicess for the provided Model (Extension Method)
         private static List<(int, int)> FindEmptyIndicess(this SudokuModel model)
         {
             List<(int, int)> indices = new List<(int, int)>();

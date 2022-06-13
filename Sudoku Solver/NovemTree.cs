@@ -6,6 +6,10 @@ using System.Threading.Tasks;
 
 namespace Sudoku_Solver
 {
+    /// <summary>
+    /// Class representing a tree with nine children
+    /// </summary>
+    /// <typeparam name="T">Content of the Node</typeparam>
     public class NovemTreeNode<T>
     {
         protected NovemTreeNode<T>[] Children { get; set; } = new NovemTreeNode<T>[9];
@@ -18,6 +22,11 @@ namespace Sudoku_Solver
             this.Parent = parent;
         }
 
+        /// <summary>
+        /// Indexer
+        /// </summary>
+        /// <param name="idx">Children-Index. May only be between 0 and 8</param>
+        /// <returns></returns>
         public NovemTreeNode<T> this[int idx]
         {
             get 
@@ -32,6 +41,11 @@ namespace Sudoku_Solver
             }
         }
 
+        /// <summary>
+        /// Deconstruct Method for serialization into a Tuple
+        /// </summary>
+        /// <param name="content"></param>
+        /// <param name="children"></param>
         public void Deconstruct(out T content, out NovemTreeNode<T>[] children)
         {
             content = this.Content;

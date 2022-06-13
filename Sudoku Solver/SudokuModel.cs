@@ -6,11 +6,17 @@ using System.Threading.Tasks;
 
 namespace Sudoku_Solver
 {
+    /// <summary>
+    /// Struct for representation of a index in the Sudoku
+    /// </summary>
     public struct SudokuIndex
     {
         public int Row, Col;
     };
 
+    /// <summary>
+    /// Model Class of a Sudoku providing functions for it. It can be assumed to always be in a valid state
+    /// </summary>
     public class SudokuModel
     {
         public static readonly int FIELD_EMPTY = 0;
@@ -61,7 +67,6 @@ namespace Sudoku_Solver
         /// <returns>Returns true, if putting the value onto the specified index would result in a valid field</returns>
         public bool SetIfValid(SudokuIndex index, int value)
         {
- 
             //This function is based on induction
             //Base case is, that an empty Sudoku is valid
             //If a value is added, then only check the row/col/field it is in O(3n)
@@ -108,13 +113,25 @@ namespace Sudoku_Solver
             return returnValue;     
         }
 
+        /// <summary>
+        /// Resets the Sudoku to empty
+        /// </summary>
         public void Reset()
         {
             for(int i = 0; i < Values.GetLength(0); i++)
             {
                 for(int j = 0; j < Values.GetLength(1); j++) this.Values[i, j] = FIELD_EMPTY;
-                
             }
+        }
+
+        public override string ToString()
+        {
+            var Indicess = from index in Enumerable.Range(0, this.Values.Length)
+                           select (index / SudokuModel.SIZE, index % SudokuModel.SIZE);
+
+            var Groups = from index in Indicess
+                         group index by index.Item1;
+            return string.Join("\n", Groups.Select(g => "|" + string.Join("|", g.Select(i => this[i] != 0 ? this[i].ToString() : " ")) + "|"));
         }
     }
 }

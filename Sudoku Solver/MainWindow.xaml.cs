@@ -129,7 +129,7 @@ namespace Sudoku_Solver
                     {
                         var label = this.SudokuLabels[row, col];
                         var value = this.Model[(row, col)].ToString();
-                        if (label.Content.ToString() == " " && value != "0")
+                        if (label.Content.ToString() != value && value != "0")
                         {
                             (label.Parent as Border).Background = Brushes.ForestGreen;
                         }
@@ -139,6 +139,8 @@ namespace Sudoku_Solver
                     }
                 }
             }
+            Console.WriteLine(this.Model.ToString());
+            Console.WriteLine();
             
         }
 
